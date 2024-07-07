@@ -1,0 +1,68 @@
+﻿@page "/patients/create"
+@inject BlazorAppFullStack.Data.BlazorAppFullStackContext DB
+@using BlazorAppFullStack.Models
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h4>Patient</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Patient" OnValidSubmit="AddPatient" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" />
+            <div class="mb-3">
+                <label for="dateofbirth" class="form-label">DateOfBirth:</label> 
+                <InputDate id="dateofbirth" @bind-Value="Patient.DateOfBirth" class="form-control" /> 
+                <ValidationMessage For="() => Patient.DateOfBirth" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="street1" class="form-label">Street1:</label> 
+                <InputText id="street1" @bind-Value="Patient.Street1" class="form-control" /> 
+                <ValidationMessage For="() => Patient.Street1" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="street2" class="form-label">Street2:</label> 
+                <InputText id="street2" @bind-Value="Patient.Street2" class="form-control" /> 
+                <ValidationMessage For="() => Patient.Street2" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="city" class="form-label">City:</label> 
+                <InputText id="city" @bind-Value="Patient.City" class="form-control" /> 
+                <ValidationMessage For="() => Patient.City" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="state" class="form-label">State:</label> 
+                <InputText id="state" @bind-Value="Patient.State" class="form-control" /> 
+                <ValidationMessage For="() => Patient.State" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="zipcode" class="form-label">ZipCode:</label> 
+                <InputText id="zipcode" @bind-Value="Patient.ZipCode" class="form-control" /> 
+                <ValidationMessage For="() => Patient.ZipCode" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/patients">Back to List</a>
+</div>
+
+@code {
+
+    [SupplyParameterFromForm]
+    public Patient Patient { get; set; } = new();
+
+    // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+    public async Task AddPatient()
+    {
+        DB.Patient.Add(Patient);
+        await DB.SaveChangesAsync();
+        NavigationManager.NavigateTo("/patients");
+    }
+}

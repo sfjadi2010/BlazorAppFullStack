@@ -1,0 +1,29 @@
+﻿@page "/patients"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject BlazorAppFullStack.Data.BlazorAppFullStackContext DB
+@using BlazorAppFullStack.Models
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="patients/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="DB.Patient">
+    <PropertyColumn Title="First Name" Property="patient => patient.Name.FirstName" />
+    <PropertyColumn Title="Last Name" Property="patient => patient.Name.LastName" />
+    <PropertyColumn Title="DOB" Property="patient => patient.DateOfBirth" />
+    <PropertyColumn Title="Address" Property="patient => patient.Street1" />
+    <PropertyColumn Title="" Property="patient => patient.Street2" />
+    <PropertyColumn Title="City" Property="patient => patient.City" />
+    <PropertyColumn Title="State" Property="patient => patient.State" />
+    <PropertyColumn Title="Zip Code" Property="patient => patient.ZipCode" />
+
+    <TemplateColumn Context="patient">
+        <a href="@($"patients/edit?id={patient.Id}")">Edit</a> |
+        <a href="@($"patients/details?id={patient.Id}")">Details</a> |
+        <a href="@($"patients/delete?id={patient.Id}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
