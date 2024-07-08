@@ -3,17 +3,31 @@
 @using BlazorAppFullStack.Models
 @inject NavigationManager NavigationManager
 
-<PageTitle>Create</PageTitle>
+<PageTitle>Add Patient</PageTitle>
 
-<h1>Create</h1>
+<h4>Add Patient</h4>
 
-<h4>Patient</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <EditForm method="post" Model="Patient" OnValidSubmit="AddPatient" FormName="create" Enhance>
             <DataAnnotationsValidator />
             <ValidationSummary class="text-danger" />
+            <div class="mb-3">
+                <label for="street1" class="form-label">First Name:</label>
+                <InputText id="street1" @bind-Value="Patient.Name.FirstName" class="form-control" />
+                <ValidationMessage For="() => Patient.Name.FirstName" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="street1" class="form-label">Middle Name:</label>
+                <InputText id="street1" @bind-Value="Patient.Name.MiddleName" class="form-control" />
+                <ValidationMessage For="() => Patient.Name.MiddleName" class="text-danger" />
+            </div>
+            <div class="mb-3">
+                <label for="street1" class="form-label">Lastst Name:</label>
+                <InputText id="street1" @bind-Value="Patient.Name.LastName" class="form-control" />
+                <ValidationMessage For="() => Patient.Name.LastName" class="text-danger" />
+            </div>
             <div class="mb-3">
                 <label for="dateofbirth" class="form-label">DateOfBirth:</label> 
                 <InputDate id="dateofbirth" @bind-Value="Patient.DateOfBirth" class="form-control" /> 
@@ -40,7 +54,7 @@
                 <ValidationMessage For="() => Patient.State" class="text-danger" /> 
             </div>        
             <div class="mb-3">
-                <label for="zipcode" class="form-label">ZipCode:</label> 
+                <label for="zipcode" class="form-label">Zip Code:</label> 
                 <InputText id="zipcode" @bind-Value="Patient.ZipCode" class="form-control" /> 
                 <ValidationMessage For="() => Patient.ZipCode" class="text-danger" /> 
             </div>        

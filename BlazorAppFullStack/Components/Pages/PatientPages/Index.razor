@@ -3,16 +3,19 @@
 @inject BlazorAppFullStack.Data.BlazorAppFullStackContext DB
 @using BlazorAppFullStack.Models
 
-<PageTitle>Index</PageTitle>
+@rendermode InteractiveServer
 
-<h1>Index</h1>
+<PageTitle>Enrolled Patients</PageTitle>
+
+<h1>Enrolled Patients</h1>
 
 <p>
     <a href="patients/create">Create New</a>
 </p>
 
-<QuickGrid Class="table" Items="DB.Patient">
+<QuickGrid Class="table" Items="DB.Patient" Pagination="@pagination">
     <PropertyColumn Title="First Name" Property="patient => patient.Name.FirstName" />
+    <PropertyColumn Title="Middle Name" Property="patient => patient.Name.MiddleName" />
     <PropertyColumn Title="Last Name" Property="patient => patient.Name.LastName" />
     <PropertyColumn Title="DOB" Property="patient => patient.DateOfBirth" />
     <PropertyColumn Title="Address" Property="patient => patient.Street1" />
@@ -22,8 +25,15 @@
     <PropertyColumn Title="Zip Code" Property="patient => patient.ZipCode" />
 
     <TemplateColumn Context="patient">
-        <a href="@($"patients/edit?id={patient.Id}")">Edit</a> |
-        <a href="@($"patients/details?id={patient.Id}")">Details</a> |
-        <a href="@($"patients/delete?id={patient.Id}")">Delete</a>
+        <a href="@($"patients/edit?id={patient.Id}")"><i class="bi bi-pencil-square"></i></a> |
+        <a href="@($"patients/details?id={patient.Id}")"><i class="bi bi-info-square"></i></a> |
+        <a href="@($"patients/delete?id={patient.Id}")"><i class="bi bi-trash"></i></a>
     </TemplateColumn>
 </QuickGrid>
+
+<Paginator State="@pagination" />
+
+@code 
+{
+    PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
+}
