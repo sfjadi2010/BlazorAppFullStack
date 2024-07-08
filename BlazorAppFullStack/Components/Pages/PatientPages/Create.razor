@@ -35,28 +35,28 @@
             </div>        
             <div class="mb-3">
                 <label for="street1" class="form-label">Street1:</label> 
-                <InputText id="street1" @bind-Value="Patient.Street1" class="form-control" /> 
-                <ValidationMessage For="() => Patient.Street1" class="text-danger" /> 
+                <InputText id="street1" @bind-Value="Patient.Address.Street1" class="form-control" />
+                <ValidationMessage For="() => Patient.Address.Street1" class="text-danger" />
             </div>        
             <div class="mb-3">
                 <label for="street2" class="form-label">Street2:</label> 
-                <InputText id="street2" @bind-Value="Patient.Street2" class="form-control" /> 
-                <ValidationMessage For="() => Patient.Street2" class="text-danger" /> 
+                <InputText id="street2" @bind-Value="Patient.Address.Street2" class="form-control" />
+                <ValidationMessage For="() => Patient.Address.Street2" class="text-danger" />
             </div>        
             <div class="mb-3">
                 <label for="city" class="form-label">City:</label> 
-                <InputText id="city" @bind-Value="Patient.City" class="form-control" /> 
-                <ValidationMessage For="() => Patient.City" class="text-danger" /> 
+                <InputText id="city" @bind-Value="Patient.Address.City" class="form-control" />
+                <ValidationMessage For="() => Patient.Address.City" class="text-danger" />
             </div>        
             <div class="mb-3">
                 <label for="state" class="form-label">State:</label> 
-                <InputText id="state" @bind-Value="Patient.State" class="form-control" /> 
-                <ValidationMessage For="() => Patient.State" class="text-danger" /> 
+                <InputText id="state" @bind-Value="Patient.Address.State" class="form-control" />
+                <ValidationMessage For="() => Patient.Address.State" class="text-danger" />
             </div>        
             <div class="mb-3">
                 <label for="zipcode" class="form-label">Zip Code:</label> 
-                <InputText id="zipcode" @bind-Value="Patient.ZipCode" class="form-control" /> 
-                <ValidationMessage For="() => Patient.ZipCode" class="text-danger" /> 
+                <InputText id="zipcode" @bind-Value="Patient.Address.ZipCode" class="form-control" />
+                <ValidationMessage For="() => Patient.Address.ZipCode" class="text-danger" />
             </div>        
             <button type="submit" class="btn btn-primary">Create</button>
         </EditForm>

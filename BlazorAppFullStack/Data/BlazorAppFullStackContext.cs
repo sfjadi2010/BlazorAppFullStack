@@ -22,6 +22,7 @@ public class BlazorAppFullStackContext : DbContext
         modelBuilder.Entity<Patient>(p =>
         {
             p.ComplexProperty(x => x.Name, x => { x.IsRequired(); });
+            p.ComplexProperty(x => x.Address, x => { x.IsRequired(); });
         });
 
         base.OnModelCreating(modelBuilder);

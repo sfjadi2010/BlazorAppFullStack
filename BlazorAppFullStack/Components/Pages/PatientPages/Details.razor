@@ -17,18 +17,24 @@
     }
     else {
         <dl class="row">
+            <dt class="col-sm-2">First Name</dt>
+            <dd class="col-sm-10">@patient.Name.FirstName</dd>
+            <dt class="col-sm-2">Middle Name</dt>
+            <dd class="col-sm-10">@patient.Name.MiddleName</dd>
+            <dt class="col-sm-2">Last Name</dt>
+            <dd class="col-sm-10">@patient.Name.LastName</dd>
             <dt class="col-sm-2">DateOfBirth</dt>
             <dd class="col-sm-10">@patient.DateOfBirth</dd>
             <dt class="col-sm-2">Street1</dt>
-            <dd class="col-sm-10">@patient.Street1</dd>
+            <dd class="col-sm-10">@patient.Address.Street1</dd>
             <dt class="col-sm-2">Street2</dt>
-            <dd class="col-sm-10">@patient.Street2</dd>
+            <dd class="col-sm-10">@patient.Address.Street2</dd>
             <dt class="col-sm-2">City</dt>
-            <dd class="col-sm-10">@patient.City</dd>
+            <dd class="col-sm-10">@patient.Address.City</dd>
             <dt class="col-sm-2">State</dt>
-            <dd class="col-sm-10">@patient.State</dd>
+            <dd class="col-sm-10">@patient.Address.State</dd>
             <dt class="col-sm-2">ZipCode</dt>
-            <dd class="col-sm-10">@patient.ZipCode</dd>
+            <dd class="col-sm-10">@patient.Address.ZipCode</dd>
         </dl>
         <div>
             <a href="@($"/patients/edit?id={patient.Id}")">Edit</a> |
